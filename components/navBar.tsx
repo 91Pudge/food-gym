@@ -1,9 +1,18 @@
 import Link from "next/link";
 import styles from "../styles/navBar.module.css";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useEffect } from "react";
+import Router, { NextRouter } from "next/router";
 
 const NavBar = () => {
   const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session) {
+      // Redirect to a different page if the user is signed in
+      Router.push("/recipe-page");
+    }
+  }, [session]);
   return (
     <div className={styles["bar"]}>
       <h1>Gym food</h1>
