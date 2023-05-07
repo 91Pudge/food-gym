@@ -13,13 +13,41 @@
   gap: 10px;
 }
 
-.nav a {
-  color: black;
-  text-decoration: none;
-  text-align: center;
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .nav h1,
 .nav a {
   color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.login p {
+  margin-right: 10px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.login button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.login button:hover {
+  background-color: white;
+  color: black;
 }
