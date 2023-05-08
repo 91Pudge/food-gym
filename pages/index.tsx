@@ -1,9 +1,8 @@
 import Head from "next/head";
 import clientPromise from "../lib/mongodb";
 import { InferGetServerSidePropsType } from "next";
-import Login from "../components/login";
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   try {
     await clientPromise;
     // `await clientPromise` will use the default database passed in the MONGODB_URI
@@ -35,9 +34,7 @@ export default function Home({
         <title>Food Gym</title>
       </Head>
 
-      <main>
-        <Login />
-      </main>
+      <main></main>
     </div>
   );
 }
