@@ -22,6 +22,7 @@ const RecipePage = ({ data }: Recipe) => {
 
   return session ? (
     <div>
+      <title>Food Gym</title>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
