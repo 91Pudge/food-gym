@@ -15,7 +15,7 @@ const NavBar = () => {
   }, [session]);
   return (
     <div className={styles["bar"]}>
-      <h1>Gym food </h1>
+      <h1>Food Gym</h1>
       <div className={styles["nav"]}>
         {session && <Link href={"/recipe-page"}>Search</Link>}
         <Link href={"/"}>Home</Link>
