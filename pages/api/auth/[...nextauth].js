@@ -6,6 +6,7 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 
 export const authOptions = {
   // Configure one or more authentication providers
+  secret: process.env.SECRET,
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
