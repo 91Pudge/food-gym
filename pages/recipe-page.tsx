@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import router from "next/router";
 import { useEffect, useState } from "react";
 import Card, { Recipe } from "../components/card";
+import styles from "../styles/recipecard.module.css";
 
 const RecipePage = ({ data }: Recipe) => {
   const { data: session } = useSession();
@@ -21,21 +22,25 @@ const RecipePage = ({ data }: Recipe) => {
   }, [data.hits]);
 
   return session ? (
-    <div>
-      <title>Food Gym</title>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search.."
-          onChange={(event) => setInput(event.target.value)}
-        />
-        <button>Search</button>
-      </form>
-      <Card apiData={apiData} />
+    <div className={styles["container"]}>
+      <div>
+        <title>Food Gym</title>
+        <form onSubmit={handleSubmit}>
+          <input
+            width={"1000px"}
+            type="text"
+            placeholder="Discover more than 10,000 recipes on Food Gym"
+            onChange={(event) => setInput(event.target.value)}
+          />
+          <button>Search</button>
+        </form>
+        <Card apiData={apiData} />
+      </div>
     </div>
   ) : (
-    // <card />
-    <div>Please log in to use this website</div>
+    <div className={styles["container"]}>
+      <p>Please log in to use this website</p>
+    </div>
   );
 };
 
