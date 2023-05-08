@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { useSession } from "next-auth/react";
 import router from "next/router";
 import { useEffect, useState } from "react";
-import Card, { Recipe } from "../components/Card";
+import Card, { Recipe } from "../components/card";
 
 const RecipePage = ({ data }: Recipe) => {
   const { data: session } = useSession();
