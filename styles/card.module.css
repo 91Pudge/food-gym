@@ -11,12 +11,6 @@
   padding: 10px;
 }
 
-/* .singleRecipes,
-.container {
-  text-align: center;
-  margin-bottom: 10px;
-} */
-
 .singleRecipes,
 .container h1 {
   margin: 0;
@@ -27,4 +21,10 @@
   margin-bottom: 10px;
   border-radius: 10px;
   box-shadow: 7px 7px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.singleRecipes img:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
