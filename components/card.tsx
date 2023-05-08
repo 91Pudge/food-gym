@@ -1,4 +1,4 @@
-import styles from "@/styles/card.module.css";
+import styles from "../styles/card.module.css";
 
 export interface Recipe {
   [x: string]: any;
@@ -34,21 +34,19 @@ export interface Recipe {
 const Card = ({ apiData }: any) => {
   console.log(apiData);
   return (
-    <div>
+    <div className={styles["cardStyling"]}>
       {" "}
       {apiData.map((meal: Recipe, i: number) => {
         return (
-          <div key={i}>
-            <div>
-              <h1>{meal.recipe.label}</h1>
-
-              <a href={meal.recipe.url}>See the full recipe here</a>
+          <div key={i} className={styles["singleRecipes"]}>
+            <div className={styles["container"]}>
               <img src={meal.recipe.image} />
+              <p>{meal.recipe.label}</p>
+              <a href={meal.recipe.url}>See the full recipe here</a>
             </div>
           </div>
         );
       })}
-      //{" "}
     </div>
   );
 };
