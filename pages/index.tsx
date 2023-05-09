@@ -1,6 +1,7 @@
 import Head from "next/head";
 import clientPromise from "../lib/mongodb";
 import { InferGetServerSidePropsType } from "next";
+import styles from "../styles/about.module.css";
 
 export async function getServerSideProps() {
   try {
@@ -29,12 +30,14 @@ export default function Home({
   isConnected
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <div className="container">
+    <div className={styles["container"]}>
       <Head>
         <title>Food Gym</title>
       </Head>
 
-      <main></main>
+      <main>
+        <p>To discover fascinating recipes, please log in.</p>
+      </main>
     </div>
   );
 }
