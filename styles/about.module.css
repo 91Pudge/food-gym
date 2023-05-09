@@ -1,0 +1,27 @@
+.container {
+  width: 600px;
+  display: flex;
+  justify-content: center; /* centers content horizontally */
+  align-items: center; /* centers content vertically */
+  text-align: justify;
+  margin: 0 auto;
+
+  height: 100vh;
+  font-size: x-large;
+  line-height: 1.5;
+}
+
+@keyframes color-change {
+  from {
+    color: white;
+  }
+  to {
+    color: black;
+  }
+}
+
+.container p {
+  animation-name: color-change;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+}
