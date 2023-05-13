@@ -17,11 +17,10 @@ export const getStaticProps: GetStaticProps<HomeProps> = async (context) => {
 
   console.log("!!!", data);
 
-  const filteredData = data.map(({ _id, name, email, age }) => ({
+  const filteredData = data.map(({ _id, name, email }) => ({
     id: _id.toString(),
     name,
-    email,
-    age
+    email
   }));
 
   return {
