@@ -17,7 +17,12 @@ const NavBar = () => {
     <div className={styles["bar"]}>
       <h1>Food Gym</h1>
       <div className={styles["nav"]}>
-        {session && <Link href={"/recipe-page"}>Search</Link>}
+        {session && (
+          <>
+            <Link href={"/recipe-page"}>Search</Link>
+            <Link href={"/stored-recipes"}>Stored Recipes</Link>
+          </>
+        )}
         <Link href={"/"}>Home</Link>
         <Link href={"/about"}>About</Link>
         <Link href={"/contact"}>Contact</Link>
