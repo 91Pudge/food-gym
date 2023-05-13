@@ -3,6 +3,7 @@
 }
 .bar h1 {
   color: white;
+  margin-left: 10px;
 }
 
 .nav {
@@ -35,6 +36,7 @@
   color: white;
   text-decoration: none;
   text-align: center;
+  font-size: larger;
 }
 
 .login p {
