@@ -1,48 +1,70 @@
-import { GetStaticProps } from "next";
-import { getUsers } from "./api/user";
+import { GetStaticProps, GetStaticPropsContext } from "next";
+import { getRecipes } from "./api/user";
 
-interface User {
+interface Recipe {
   id: string;
-  name: string;
-  email: string;
-  age?: number;
+  uri: string;
+  label: string;
+  image: string;
+  source: string;
+  url: string;
+  shareAs: string;
+  yield: number;
+  dietLabels: string[];
+  healthLabels: string[];
+  cautions: string[];
+  ingredientLines: string[];
+  ingredients: { text: string; weight: number }[];
+  calories: number;
+  totalWeight: number;
+  totalTime: number;
+  cuisineType: string[];
+  mealType: string[];
+  dishType: string[];
+  totalNutrients: Record<string, any>;
+  totalDaily: Record<string, any>;
+  digest: any[];
 }
 
 interface HomeProps {
-  users: User[];
+  recipes: Recipe[];
 }
 
-export const getStaticProps: GetStaticProps<HomeProps> = async (context) => {
-  const data = await getUsers();
-
-  console.log("!!!", data);
-
-  const filteredData = data.map(({ _id, name, email }) => ({
+export const getStaticProps: GetStaticProps<HomeProps> = async (
+  context: GetStaticPropsContext
+) => {
+  const data = await getRecipes();
+  console.log(data[1].recipe.uri, "***");
+  const filteredData = data.map(({ _id, ...recipe }) => ({
     id: _id.toString(),
-    name,
-    email
+    uri: data[1].recipe.uri || null,
+    label: data[1].recipe.label
   }));
+  console.log(filteredData, "!!!!!");
 
   return {
     props: {
-      users: filteredData
+      recipes: filteredData
     }
   };
 };
 
-const storedRecipes = ({ users }: HomeProps) => {
+const storedRecipes = ({ recipes }: HomeProps) => {
+  //   console.log(recipes);
+
   return (
-    <>
-      <p>Stored recipes</p>;
-      {users.map((i: User) => {
+    <div>
+      <p>Stored recipes</p>
+      {recipes.map((recipe, i) => {
         return (
-          <>
-            <p>{i.email}</p>
-            <p>{i.age}</p>
-          </>
+          <div key={recipe.id}>
+            <p>{recipe.id}</p>
+            <p>{recipe.uri}</p>
+            <p>{recipe.label}</p>
+          </div>
         );
       })}
-    </>
+    </div>
   );
 };
 
