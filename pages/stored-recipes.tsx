@@ -30,15 +30,31 @@ interface HomeProps {
   recipes: Recipe[];
 }
 
-export const getStaticProps: GetStaticProps<HomeProps> = async (
-  context: GetStaticPropsContext
-) => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const data = await getRecipes();
-  console.log(data[1].recipe.uri, "***");
   const filteredData = data.map(({ _id, ...recipe }) => ({
     id: _id.toString(),
     uri: data[1].recipe.uri || null,
-    label: data[1].recipe.label
+    label: data[1].recipe.label || null,
+    image: data[1].recipe.image || null,
+    source: data[1].recipe.source || null,
+    url: data[1].recipe.url || null,
+    shareAs: data[1].recipe.shareAs || null,
+    yield: data[1].recipe.yield || null,
+    dietLabels: data[1].recipe.dietLabels || [],
+    healthLabels: data[1].recipe.healthLabels || [],
+    cautions: data[1].recipe.cautions || [],
+    ingredientLines: data[1].recipe.ingredientLines || [],
+    ingredients: data[1].recipe.ingredients || [],
+    calories: data[1].recipe.calories || null,
+    totalWeight: data[1].recipe.totalWeight || null,
+    totalTime: data[1].recipe.totalTime || null,
+    cuisineType: data[1].recipe.cuisineType || [],
+    mealType: data[1].recipe.mealType || [],
+    dishType: data[1].recipe.dishType || [],
+    totalNutrients: data[1].recipe.totalNutrients || {},
+    totalDaily: data[1].recipe.totalDaily || {},
+    digest: data[1].recipe.digest || []
   }));
   console.log(filteredData, "!!!!!");
 
@@ -50,8 +66,6 @@ export const getStaticProps: GetStaticProps<HomeProps> = async (
 };
 
 const storedRecipes = ({ recipes }: HomeProps) => {
-  //   console.log(recipes);
-
   return (
     <div>
       <p>Stored recipes</p>
