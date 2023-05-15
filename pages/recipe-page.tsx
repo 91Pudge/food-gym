@@ -34,7 +34,7 @@ const RecipePage = ({ data }: Recipe) => {
           />
           <button>Search</button>
         </form>
-        <Card apiData={apiData} />
+        <Card apiData={apiData} session={session} />
       </div>
     </div>
   ) : (
