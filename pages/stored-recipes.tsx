@@ -32,31 +32,32 @@ interface HomeProps {
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const data = await getRecipes();
-  const filteredData = data.map(({ _id, ...recipe }) => ({
+  console.log("£££", data[0].data.recipe.uri, "--------");
+  const filteredData = data.map(({ _id, uri }) => ({
     id: _id.toString(),
-    uri: data[1].recipe.uri || null,
-    label: data[1].recipe.label || null,
-    image: data[1].recipe.image || null,
-    source: data[1].recipe.source || null,
-    url: data[1].recipe.url || null,
-    shareAs: data[1].recipe.shareAs || null,
-    yield: data[1].recipe.yield || null,
-    dietLabels: data[1].recipe.dietLabels || [],
-    healthLabels: data[1].recipe.healthLabels || [],
-    cautions: data[1].recipe.cautions || [],
-    ingredientLines: data[1].recipe.ingredientLines || [],
-    ingredients: data[1].recipe.ingredients || [],
-    calories: data[1].recipe.calories || null,
-    totalWeight: data[1].recipe.totalWeight || null,
-    totalTime: data[1].recipe.totalTime || null,
-    cuisineType: data[1].recipe.cuisineType || [],
-    mealType: data[1].recipe.mealType || [],
-    dishType: data[1].recipe.dishType || [],
-    totalNutrients: data[1].recipe.totalNutrients || {},
-    totalDaily: data[1].recipe.totalDaily || {},
-    digest: data[1].recipe.digest || []
+    uri: data[0].data.recipe.uri,
+    label: data[0].data.recipe.label,
+    image: data[0].data.recipe.image
+    // source: data[1].recipe.source || null,
+    // url: data[1].recipe.url || null,
+    // shareAs: data[1].recipe.shareAs || null,
+    // yield: data[1].recipe.yield || null,
+    // dietLabels: data[1].recipe.dietLabels || [],
+    // healthLabels: data[1].recipe.healthLabels || [],
+    // cautions: data[1].recipe.cautions || [],
+    // ingredientLines: data[1].recipe.ingredientLines || [],
+    // ingredients: data[1].recipe.ingredients || [],
+    // calories: data[1].recipe.calories || null,
+    // totalWeight: data[1].recipe.totalWeight || null,
+    // totalTime: data[1].recipe.totalTime || null,
+    // cuisineType: data[1].recipe.cuisineType || [],
+    // mealType: data[1].recipe.mealType || [],
+    // dishType: data[1].recipe.dishType || [],
+    // totalNutrients: data[1].recipe.totalNutrients || {},
+    // totalDaily: data[1].recipe.totalDaily || {},
+    // digest: data[1].recipe.digest || []
   }));
-  console.log(filteredData, "!!!!!");
+  // console.log(filteredData, "!!!!!");
 
   return {
     props: {
@@ -75,6 +76,7 @@ const storedRecipes = ({ recipes }: HomeProps) => {
             <p>{recipe.id}</p>
             <p>{recipe.uri}</p>
             <p>{recipe.label}</p>
+            <img src={recipe.image} />
           </div>
         );
       })}

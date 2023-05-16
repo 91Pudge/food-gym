@@ -11,7 +11,7 @@ export const getRecipes = async () => {
     .db("food-gym")
     .collection("stored-recipe")
     .find({})
-    .limit(10)
+    // .limit()
     .toArray();
   return users
 }

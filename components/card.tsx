@@ -31,10 +31,15 @@ export interface Recipe {
     url: string;
     yield: number;
   };
+  sessionEmail: string;
 }
 
-const Card = ({ apiData }: any) => {
+const Card = ({ apiData, session }: any) => {
   const [data, setData] = useState({});
+  // console.log(data, session.user.email);
+  // let dats = { recipe: { data } };
+  // console.log(dats.recipe.data.recipe.uri);
+
   const handleSubmit: FormEventHandler = async (event) => {
     event.preventDefault();
     await fetch("/api/user", {
@@ -42,10 +47,9 @@ const Card = ({ apiData }: any) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify({ id: session.user.email, data: data })
     });
   };
-  console.log(data);
   return (
     <div className={styles["cardStyling"]}>
       {" "}
