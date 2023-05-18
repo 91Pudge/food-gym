@@ -1,5 +1,6 @@
 import { FunctionComponent, ReactNode } from "react";
 import NavBar from "./navBar";
+import Footer from "./footer";
 
 interface LayOut {
   children?: ReactNode;
@@ -8,8 +9,15 @@ interface LayOut {
 const LayOut: FunctionComponent<LayOut> = ({ children }) => {
   return (
     <>
-      <NavBar />
-      <div>{children}</div>
+      <header>
+        <NavBar />
+      </header>
+      <main>
+        <div>{children}</div>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 };
